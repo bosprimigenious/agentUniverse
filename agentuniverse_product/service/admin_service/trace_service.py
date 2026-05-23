@@ -8,6 +8,7 @@ from agentuniverse_product.service.admin_service.dto import (
     TraceNodeDTO,
     TraceResponseDTO,
 )
+from agentuniverse_product.service.admin_service.guardrail_service import AdminGuardrailService
 from agentuniverse_product.service.model.message_dto import MessageDTO
 from agentuniverse_product.service.model.session_dto import SessionDTO
 from agentuniverse_product.service.session_service.session_service import SessionService
@@ -85,7 +86,7 @@ class AdminTraceService:
             nodes=nodes,
             edges=edges,
             timeline=timeline,
-            diagnostics=None,
+            diagnostics=AdminGuardrailService.analyze_session(session),
         )
 
     @staticmethod
